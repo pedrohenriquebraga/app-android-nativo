@@ -32,29 +32,41 @@ class MainActivity : AppCompatActivity() {
 
         val btSend = findViewById<Button>(R.id.btSend)
         val btClear = findViewById<Button>(R.id.btClear)
-        val tvResult = findViewById<TextView>(R.id.tvResult)
+        val tvName = findViewById<TextView>(R.id.tvName)
+        val tvEmail = findViewById<TextView>(R.id.tvEmail)
         val etName = findViewById<EditText>(R.id.etName)
+        val etEmail = findViewById<EditText>(R.id.etEmail)
 
         btSend.setOnClickListener {
             if (etName.text.isEmpty()) {
-                etName.error = "Um E-mail deve ser inserido"
+                etName.error = "Um nome deve ser inserido"
+            } else if (etEmail.text.isEmpty()) {
+                etEmail.error = "Um E-mail deve ser inserido"
             } else {
-                tvResult.text = etName.text.toString()
+                tvName.text = etName.text.toString()
+                tvEmail.text = etEmail.text.toString()
                 Toast.makeText(this, "Atualizado com sucesso!", Toast.LENGTH_SHORT).show()
             }
         }
 
         btClear.setOnClickListener {
 
-            val oldText = tvResult.text
+            val oldNameText = tvName.text
+            val oldEmailText = tvEmail.text
 
             etName.text.clear()
-            tvResult.text = ""
+            etEmail.text.clear()
+            tvName.text = ""
+            tvEmail.text = ""
 
             val constrainLayout = findViewById<ConstraintLayout>(R.id.constrainLayout)
-            Snackbar.make(constrainLayout, "Limpado com sucesso", Snackbar.LENGTH_INDEFINITE).setAction("Desfazer") {
-                tvResult.text = oldText
-                etName.setText(oldText)
+            Snackbar.make(constrainLayout, "Limpado com sucesso", Snackbar.LENGTH_LONG).setAction("Desfazer") {
+                tvName.text = oldNameText
+                etName.setText(oldNameText)
+
+                tvEmail.text = oldEmailText
+                etEmail.setText(oldEmailText)
+
                 Toast.makeText(this, "Texto revertido", Toast.LENGTH_SHORT).show()
             }.show()
         }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Primeiro app</string>
+    <string name="send">Enviar</string>
+    <string name="clear">Limpar</string>
+    <string name="hint_name">Insira seu nome</string>
+    <string name="hint_email">Insira seu email</string>
+</resources>
