@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,12 +28,22 @@ class MainActivity : AppCompatActivity() {
         // val -> não muda de valor
         // var -> mudam de valor
 
-        val btSend = findViewById<Button>(R.id.btSend);
-        val tvResult = findViewById<TextView>(R.id.tvResult);
-        val etName = findViewById<EditText>(R.id.etName);
+        val btSend = findViewById<Button>(R.id.btSend)
+        val btClear = findViewById<Button>(R.id.btClear)
+        val tvResult = findViewById<TextView>(R.id.tvResult)
+        val etName = findViewById<EditText>(R.id.etName)
 
         btSend.setOnClickListener {
-            tvResult.text = "Seu nome é " + etName.text.toString();
+            if (etName.text.isEmpty()) {
+                etName.error = "Um E-mail deve ser inserido"
+            } else {
+                tvResult.text = etName.text.toString()
+                Toast.makeText(this, "Atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btClear.setOnClickListener {
+            etName.text.clear();
         }
     }
 
