@@ -7,15 +7,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.constrainLayout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -43,9 +45,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         btClear.setOnClickListener {
-            etName.text.clear();
+            etName.text.clear()
+            tvResult.text = ""
+
+            val constrainLayout = findViewById<ConstraintLayout>(R.id.constrainLayout)
+            Snackbar.make(constrainLayout, "Teste", Snackbar.LENGTH_INDEFINITE).setAction("Ação") {
+                Toast.makeText(this, "Teste 2", Toast.LENGTH_SHORT).show()
+            }.show()
         }
+
     }
-
-
 }
