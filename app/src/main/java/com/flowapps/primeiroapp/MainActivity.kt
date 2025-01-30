@@ -45,12 +45,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         btClear.setOnClickListener {
+
+            val oldText = tvResult.text
+
             etName.text.clear()
             tvResult.text = ""
 
             val constrainLayout = findViewById<ConstraintLayout>(R.id.constrainLayout)
-            Snackbar.make(constrainLayout, "Teste", Snackbar.LENGTH_INDEFINITE).setAction("Ação") {
-                Toast.makeText(this, "Teste 2", Toast.LENGTH_SHORT).show()
+            Snackbar.make(constrainLayout, "Limpado com sucesso", Snackbar.LENGTH_INDEFINITE).setAction("Desfazer") {
+                tvResult.text = oldText
+                etName.setText(oldText)
+                Toast.makeText(this, "Texto revertido", Toast.LENGTH_SHORT).show()
             }.show()
         }
 
