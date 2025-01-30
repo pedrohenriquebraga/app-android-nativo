@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.flowapps.primeiroapp'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.flowapps.primeiroapp"
