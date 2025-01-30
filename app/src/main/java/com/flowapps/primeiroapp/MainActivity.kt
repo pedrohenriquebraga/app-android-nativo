@@ -2,6 +2,7 @@ package com.flowapps.primeiroapp
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,9 +29,10 @@ class MainActivity : AppCompatActivity() {
 
         val btSend = findViewById<Button>(R.id.btSend);
         val tvResult = findViewById<TextView>(R.id.tvResult);
+        val etName = findViewById<EditText>(R.id.etName);
 
         btSend.setOnClickListener {
-            tvResult.text = "O botão foi clicado"
+            tvResult.text = "Seu nome é " + etName.text.toString();
         }
     }
 
